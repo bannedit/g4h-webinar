@@ -1,0 +1,23 @@
+$$
+$$ bannedit
+$$ 
+
+$$ This script enables Javascript logging functionality by using breakpoints 
+$$ in the jscript!JsAtan2() aliased as Math.atan2() in Javascript.
+$$
+$$ Example Javascript code:
+$$ Math.atan2(0xdeadbeef, "this message is coming from Javascript!");
+
+$$ IE jscript version - it seems jscript is not used anymore in favor of jscript9
+.block
+{
+as ${/v:AtanJS} bp jscript!JsAtan2 ".printf \"Log: %mu\", poi(poi(poi(@esp+14)+8)+8);.echo;g"
+}
+.printf /D "<link cmd=\"AtanJS\">IE jscript</link>\n"
+
+$$ IE jscript9 version
+.block
+{
+as ${/v:AtanJS9} bp jscript9!Js::Math::Atan2 ".printf \"Log: %mu\", poi(poi(esp+14)+0c);.echo;g"
+}
+.printf /D "<link cmd = \"AtanJS9\">IE jscript9</link>\n"

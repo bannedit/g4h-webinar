@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Expires" CONTENT="-1">
+
+<title>WinDBG JScript Logger</title>
+<script>
+function init()
+{
+	var a = 10;
+	var b = 20;
+	var c;
+
+	c = a + b;
+	Math.atan2(0xdeadbeef, "c = a + b"); // tell the debugger what just happened
+	Math.atan2(0xdeadbeef, "Done"); // tell the debugger the results of the addition
+}
+</script>
+</head>
+<body onload="init();">
+<div id="container"></div>
+</body>
+</html>
